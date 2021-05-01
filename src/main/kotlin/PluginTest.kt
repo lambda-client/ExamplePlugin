@@ -6,7 +6,6 @@ import com.lambda.client.util.text.MessageSendHelper
 internal class TestPlugin: Plugin() {
 
     override fun onLoad() {
-        this.config
         this.modules.add(TestModule())
         MessageSendHelper.sendChatMessage("Hi")
     }
