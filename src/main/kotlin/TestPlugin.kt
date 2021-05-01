@@ -3,10 +3,10 @@ import com.lambda.client.plugin.api.Plugin
 import com.lambda.client.plugin.api.PluginModule
 import com.lambda.client.util.text.MessageSendHelper
 
-internal class TestPlugin: Plugin() {
+internal object TestPlugin: Plugin() {
 
     override fun onLoad() {
-        modules.add(TestModule())
+        modules.add(TestModule)
         MessageSendHelper.sendChatMessage("Hi")
     }
 
@@ -15,11 +15,11 @@ internal class TestPlugin: Plugin() {
     }
 }
 
-internal class TestModule: PluginModule(
+internal object TestModule: PluginModule(
     name = "TestModule",
     category = Category.MISC,
     description = "We do a little testing",
-    pluginMain = TestPlugin()
+    pluginMain = TestPlugin
 ) {
     init {
         onEnable {
