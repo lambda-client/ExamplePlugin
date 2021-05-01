@@ -1,17 +1,17 @@
-import com.lambda.client.plugin.api.PluginHudElement
+import com.lambda.client.event.SafeClientEvent
+import com.lambda.client.plugin.api.PluginLabelHud
 
-internal object TestHUD: PluginHudElement(
+internal object TestHUD: PluginLabelHud(
     name = "TestHUD",
-    category = Category.CLIENT,
+    category = Category.MISC,
     description = "Shows Player username",
     pluginMain = TestPlugin
 ) {
     private val prefix = setting("Prefix", "Welcome")
     private val suffix = setting("Suffix", "")
 
-//    override fun SafeClientEvent.updateText() {
-//        displayText.add(prefix.value, primaryColor)
-//        displayText.add(mc.session.username, secondaryColor)
-//        displayText.add(suffix.value, primaryColor)
-//    }
+    override fun SafeClientEvent.updateText() {
+        displayText.add(prefix.value, primaryColor)
+        displayText.add(suffix.value, primaryColor)
+    }
 }

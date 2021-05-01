@@ -6,6 +6,7 @@ internal object TestPlugin: Plugin() {
     override fun onLoad() {
         modules.add(TestModule)
         commands.add(TestCommand)
+        hudElements.add(TestHUD)
 
         MessageSendHelper.sendChatMessage("Hi")
     }
