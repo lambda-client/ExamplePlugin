@@ -2,9 +2,8 @@ import com.lambda.client.event.SafeClientEvent
 import com.lambda.client.module.Category
 import com.lambda.client.plugin.api.PluginModule
 import com.lambda.client.util.text.MessageSendHelper.sendChatMessage
-import com.lambda.client.util.threads.defaultScope
 import com.lambda.client.util.threads.onMainThreadSafe
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
 import net.minecraft.entity.Entity
 import net.minecraft.network.play.client.CPacketUseEntity
 import net.minecraft.util.EnumHand
@@ -17,7 +16,7 @@ internal object ModuleExample: PluginModule(
 ) {
     private val maxReach by setting("Max Reach", 4.9f, 0.0f..8.0f, 0.1f, description = "Player's Max Reach")
     private val mountEntity = setting("Mount Entity", false, description = "Mounts the saved entity or falls back to the closest one")
-    private val saveEntity = setting("Save Entity", false, description = "Saves the entity to mount")
+    private val saveEntity = setting("Save Entity", false, description = "Saves the entity to mount that intersects with player view")
 
     private var entityToMount: Entity? = null
 
@@ -36,7 +35,7 @@ internal object ModuleExample: PluginModule(
 
         mountEntity.consumers.add { _, it ->
             if (it) {
-                defaultScope.launch {
+                runBlocking {
                     entityToMount?.let {
                         mc.connection?.sendPacket(CPacketUseEntity(it, EnumHand.MAIN_HAND))
                     } ?: run {

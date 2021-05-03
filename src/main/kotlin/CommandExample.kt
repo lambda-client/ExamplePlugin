@@ -3,7 +3,7 @@ import com.lambda.client.manager.managers.FriendManager
 import com.lambda.client.util.text.MessageSendHelper
 
 object CommandExample: ClientCommand(
-    name = "CommandExample",
+    name = "example",
     description = "Example friend command"
 ) {
     init {
