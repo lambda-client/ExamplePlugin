@@ -70,7 +70,7 @@ dependencies {
     minecraft 'net.minecraftforge:forge:1.12.2-14.23.5.2855'
     implementation(files("lib/lambda-2.04.xx-dev-api.jar"))
 
-    jarLibs('org.spongepowered:mixin:0.7.11-SNAPSHOT') {
+    implementation('org.spongepowered:mixin:0.7.11-SNAPSHOT') {
         exclude module: 'commons-io'
         exclude module: 'gson'
         exclude module: 'guava'
@@ -85,27 +85,27 @@ dependencies {
 
     // Kotlin libs
     // kotlin-stdlib-common and annotations aren't required at runtime
-    jarLibs("org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version") {
+    implementation("org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version") {
         exclude module: 'kotlin-stdlib-common'
         exclude module: 'annotations'
     }
 
-    jarLibs("org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version") {
+    implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version") {
         exclude module: 'kotlin-stdlib-common'
         exclude module: 'annotations'
     }
 
-    jarLibs("org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version") {
+    implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version") {
         exclude module: 'kotlin-stdlib-common'
         exclude module: 'annotations'
     }
 
-    jarLibs("org.jetbrains.kotlin:kotlin-reflect:$kotlin_version") {
+    implementation("org.jetbrains.kotlin:kotlin-reflect:$kotlin_version") {
         exclude module: 'kotlin-stdlib-common'
         exclude module: 'annotations'
     }
 
-    jarLibs("org.jetbrains.kotlinx:kotlinx-coroutines-core:$kotlinx_coroutines_version") {
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:$kotlinx_coroutines_version") {
         exclude module: 'kotlin-stdlib-common'
         exclude module: 'annotations'
     }
@@ -116,11 +116,9 @@ dependencies {
 
     // This Baritone will NOT be included in the jar
     implementation 'com.github.cabaletta:baritone:1.2.14'
-
-    // This Baritone WILL be included in the jar
-    jarLibs 'cabaletta:baritone-api:1.2'
-
-    implementation configurations.jarLibs
+    
+    // Add your dependicies below
+    // jarLibs 'com.lambda:example:1.0.0'
 }
 
 mixin {
