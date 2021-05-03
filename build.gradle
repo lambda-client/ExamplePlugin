@@ -52,6 +52,12 @@ minecraft {
 
             property 'forge.logging.markers', 'SCAN,REGISTRIES,REGISTRYDUMP'
             property 'forge.logging.console.level', 'debug'
+
+            mods {
+                pluginexample {
+                    source sourceSets.main
+                }
+            }
         }
     }
 }
@@ -117,7 +123,7 @@ dependencies {
     // This Baritone will NOT be included in the jar
     implementation 'com.github.cabaletta:baritone:1.2.14'
     
-    // Add your dependicies below
+    // Add your dependencies below
     // jarLibs 'com.lambda:example:1.0.0'
 }
 
@@ -125,3 +131,5 @@ mixin {
     defaultObfuscationEnv 'searge'
     add sourceSets.main, 'mixins.lambda.refmap.json'
 }
+
+jar.finalizedBy('reobfJar')

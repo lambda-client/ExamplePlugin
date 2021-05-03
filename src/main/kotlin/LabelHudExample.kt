@@ -7,11 +7,11 @@ internal object LabelHudExample: PluginLabelHud(
     description = "Shows Player username",
     pluginMain = PluginExample
 ) {
-    private val prefix = setting("Prefix", "Welcome")
-    private val suffix = setting("Suffix", "")
+    private val prefix by setting("Prefix", "Welcome")
+    private val suffix by setting("Suffix", "")
 
     override fun SafeClientEvent.updateText() {
-        displayText.add(prefix.value, primaryColor)
-        displayText.add(suffix.value, primaryColor)
+        displayText.add(prefix, primaryColor)
+        displayText.add(suffix, primaryColor)
     }
 }

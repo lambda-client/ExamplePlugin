@@ -1,7 +1,7 @@
 import com.lambda.client.event.SafeClientEvent
 import com.lambda.client.module.Category
 import com.lambda.client.plugin.api.PluginModule
-import com.lambda.client.util.text.MessageSendHelper
+import com.lambda.client.util.text.MessageSendHelper.sendChatMessage
 import com.lambda.client.util.threads.defaultScope
 import com.lambda.client.util.threads.onMainThreadSafe
 import kotlinx.coroutines.launch
@@ -24,11 +24,11 @@ internal object ModuleExample: PluginModule(
     init {
         saveEntity.consumers.add {_, it ->
             if (it) {
-                if (mc.objectMouseOver.entityHit is Entity) {
-                    entityToMount = mc.objectMouseOver.entityHit as Entity
-                    MessageSendHelper.sendChatMessage("$chatName Entity saved ${entityToMount!!.positionVector} ID: ${entityToMount!!.entityId}")
-                } else {
-                    MessageSendHelper.sendChatMessage("$chatName No Entity was found at your current cursor position!")
+                mc.objectMouseOver?.entityHit?.let {
+                    entityToMount = it
+                    sendChatMessage("$chatName Entity saved ${it.positionVector} ID: ${it.entityId}")
+                } ?: run {
+                    sendChatMessage("$chatName No Entity was found at your current cursor position!")
                 }
             }
             false
@@ -40,9 +40,9 @@ internal object ModuleExample: PluginModule(
                     entityToMount?.let {
                         mc.connection?.sendPacket(CPacketUseEntity(it, EnumHand.MAIN_HAND))
                     } ?: run {
-                        MessageSendHelper.sendChatMessage("No entity was saved, falling back to the closest entity.")
+                        sendChatMessage("No entity was saved, falling back to the closest entity.")
                         onMainThreadSafe {
-                            mountClosestEntity<Entity>()
+                            mountClosestEntity()
                         }
                     }
                 }
@@ -51,22 +51,21 @@ internal object ModuleExample: PluginModule(
         }
     }
 
-    private inline fun <reified T: Entity> SafeClientEvent.mountClosestEntity() {
-        world.loadedEntityList.filterIsInstance<T>().filter {
-            it != player.ridingEntity
-        }.minByOrNull {
-            it.positionVector.distanceTo(player.positionVector)
-        }?.let {
-            if (it.positionVector.distanceTo(player.positionVector) < maxReach || maxReach == 0.0f) {
-                MessageSendHelper.sendChatMessage("$chatName Mounting: ${T::class.simpleName}@${it.positionVector}")
-                defaultScope.launch {
+    private fun SafeClientEvent.mountClosestEntity() {
+        world.loadedEntityList
+            .filter {
+                it != player.ridingEntity
+            }.minByOrNull {
+                player.getDistanceSq(it)
+            } ?.let {
+                if (maxReach == 0.0f || player.getDistance(it) <= maxReach) {
+                    sendChatMessage("$chatName Mounting: ${it.name}@${it.positionVector}")
                     connection.sendPacket(CPacketUseEntity(it, EnumHand.MAIN_HAND))
+                } else {
+                    sendChatMessage("$chatName Closest entity too far away: ${it.name}@${it.positionVector.distanceTo(player.positionVector)}")
                 }
-            } else {
-                MessageSendHelper.sendChatMessage("$chatName Closest entity too far away: ${T::class.simpleName}@${it.positionVector.distanceTo(player.positionVector)}")
+            } ?: run {
+                sendChatMessage("$chatName Can't find any Entity in world.")
             }
-        } ?: run {
-            MessageSendHelper.sendChatMessage("$chatName Can't find any ${T::class.simpleName} in world.")
-        }
     }
 }
