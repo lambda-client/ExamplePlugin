@@ -6,6 +6,6 @@
     "you"
   ],
   "description": "does absolutely nothing",
-  "main_class": "TestPlugin",
+  "main_class": "PluginExample",
   "min_api_version": "2.04.01"
 }

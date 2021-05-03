@@ -2,9 +2,9 @@ import com.lambda.client.command.ClientCommand
 import com.lambda.client.manager.managers.FriendManager
 import com.lambda.client.util.text.MessageSendHelper
 
-object TestCommand: ClientCommand(
-    name = "test",
-    description = "Does testing"
+object CommandExample: ClientCommand(
+    name = "CommandExample",
+    description = "Example friend command"
 ) {
     init {
         literal("add", "new", "+") {

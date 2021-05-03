@@ -1,11 +1,11 @@
 import com.lambda.client.event.SafeClientEvent
 import com.lambda.client.plugin.api.PluginLabelHud
 
-internal object TestHUD: PluginLabelHud(
-    name = "TestHUD",
+internal object LabelHudExample: PluginLabelHud(
+    name = "LabelHudExample",
     category = Category.MISC,
     description = "Shows Player username",
-    pluginMain = TestPlugin
+    pluginMain = PluginExample
 ) {
     private val prefix = setting("Prefix", "Welcome")
     private val suffix = setting("Suffix", "")
