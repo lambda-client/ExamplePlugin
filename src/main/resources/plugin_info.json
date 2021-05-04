@@ -1,11 +1,11 @@
 {
-  "name": "TestPlugin",
+  "name": "PluginExample",
   "version": "1.0",
   "authors": [
     "me",
     "you"
   ],
   "description": "does absolutely nothing",
-  "main_class": "TestPlugin",
+  "main_class": "PluginExample",
   "min_api_version": "2.04.01"
 }
