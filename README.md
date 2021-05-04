@@ -6,22 +6,24 @@ This project in an example to show how a proper plugin is set up.
 
 Follow these steps to build your own plugin for lambda.
 
-### Clone Repository
+### 1. Clone Repository
 
-### Setup IDE
+### 2. Setup IDE
 
-### Configure Gradle
+### 3. Configure Gradle
 
-### Plugin
+### 4. Plugin
 
-### PluginModule
+### 6. PluginModule
 
-### ClientCommand
+### 7. ClientCommand
 
-### PluginLabelHud
+### 8. PluginLabelHud
 
-### Background Jobs
+### 9. Background Jobs
 
-### Config
+### 10. Config
 
-### Build
+### 11. Build
+
+### 12. Publish
