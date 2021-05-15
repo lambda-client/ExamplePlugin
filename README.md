@@ -1,29 +1,84 @@
 # Lambda Plugin SDK
 
-This project in an example to show how a proper plugin is set up.
+This project in an example to show how a proper plugin for [Lambda Client](https://github.com/lambda-client/lambda) is set up.
+The advantage of plugins for a utility mod is that they allow the user to decide what features their personalized client will have. Plugins work in plug and play manner, and can be downloaded and activated inside the ingame menu without reloading the client as long as no mixins are used for the plugin.
+If you are scared about the Kotlin in this project be aware that Kotlin is a wrapper language for Java. That means that plugins can also be natively written in Java.
 
 ## Setup
 
-Follow these steps to build your own plugin for lambda.
+To achieve coding building and publishing your own plugin most of the following steps are required.
 
-### 1. Clone Repository
+### Fork
+This is a template repository and can be used as a base to create a custom plugin. Press the `Use as template` button on GitHub to automatically create a linked fork to this repository.
 
-### 2. Setup IDE
+### Clone Repository
 
-### 3. Configure Gradle
+Clone the repository to your local machine. Use the link of either your fork or the main repository.
+```
+git clone https://github.com/lambda-client/plugin-sdk
+```
 
-### 4. Plugin
+### Setup IDE
 
-### 6. PluginModule
+In this guide we will use [IntelliJ IDEA](https://www.jetbrains.com/idea/) as IDE.
+1. Open the project from `File > Open...`
+2. Let the IDE collect dependencies and index the code.
 
-### 7. ClientCommand
+### Configure Gradle
 
-### 8. PluginLabelHud
+Test if the environment is set up correctly by building the plugin jar using the Gradle tab on the left side of the IDE.
+1. Go to `PluginExample > Tasks > build > jar` in the Gradle tab and run the script
+2. IntelliJ will create a new directory called `build` the final built jar will be in `build/libs`
 
-### 9. Background Jobs
+### Config
 
-### 10. Config
+Configure the meta data of your plugin in `plugin_info.json` and `mcmod.info`
+The flag `main_class` must contain the target main class `Plugin` in this case it the `PluginExample.kt`
 
-### 11. Build
+### Plugin
 
-### 12. Publish
+The plugin main class will act as a register for the functions a plugin can provide.
+For example when a new module class is created you have to add this to the `onLoad()` function of the plugin class.
+```
+modules.add(ModuleExample)
+```
+Every service is required to be added to the main class in order to index the contents.
+
+### PluginModule
+
+A module represents a utility module inside the game.
+The `PluginModule` class acts as a wrapper for `Module` class. For many examples on how a module can work check out the [native modules](https://github.com/lambda-client/lambda/tree/master/src/main/kotlin/com/lambda/client/module/modules) of lambda, or the given example in this project.
+The difference to the native `Module` class is that a referral to the main plugin class is given in the object data.
+```
+pluginMain = PluginExample
+```
+
+### ClientCommand
+
+Plugins use the same class as the native client for registering commands. Feel free to check out the [commands of Lambda Client](https://github.com/lambda-client/lambda/tree/master/src/main/kotlin/com/lambda/client/command/commands) as reference. 
+
+### PluginLabelHud
+
+A LabelHud is used to display information in the player GUI.
+The `PluginLabelHud` class acts as a wrapper for `LabelHud` class. For many examples on how a hud can work check out the [native hud elements](https://github.com/lambda-client/lambda/tree/master/src/main/kotlin/com/lambda/client/gui/hudgui/elements) of lambda, or the given example in this project.
+The difference to the native `LabelHud` class is that a referral to the main plugin class is given in the object data.
+```
+pluginMain = PluginExample
+```
+
+### Background Jobs
+
+If coroutines are needed background jobs can be registered using
+```
+bgJobs.add(BackgroundJob)
+```
+
+### Build
+
+1. Go to `PluginExample > Tasks > build > jar` in the Gradle tab and run the script
+2. IntelliJ will create a new directory called `build` the final built jar will be in `build/libs`
+3. Put the `ExamplePlugin-1.0.jar` into your `./minecraft/lambda/plugins` folder and run the game.
+
+### Publish (coming soon)
+
+Insert the link of your created fork into the plugin manager to load the plugin.

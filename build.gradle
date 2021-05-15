@@ -1,8 +1,6 @@
 version project.modVersion
 group project.modGroup
 
-wrapper { gradleVersion = '6.8.3' }
-
 buildscript {
     repositories {
         maven { url = 'https://files.minecraftforge.net/maven' }
@@ -25,6 +23,7 @@ compileKotlin {
     kotlinOptions {
         jvmTarget = "1.8"
         useIR = true
+        freeCompilerArgs += '-Xlambdas=indy'
     }
 }
 
