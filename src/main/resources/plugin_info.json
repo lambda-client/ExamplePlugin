@@ -6,6 +6,9 @@
     "you"
   ],
   "description": "does absolutely nothing",
+  "url": "",
+  "min_api_version": "2.05.01",
+  "required_plugins": [],
   "main_class": "PluginExample",
-  "min_api_version": "2.04.01"
+  "hot_reload": true
 }

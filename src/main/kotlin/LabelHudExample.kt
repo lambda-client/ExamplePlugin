@@ -4,7 +4,7 @@ import com.lambda.client.plugin.api.PluginLabelHud
 internal object LabelHudExample: PluginLabelHud(
     name = "LabelHudExample",
     category = Category.MISC,
-    description = "Shows Player username",
+    description = "Simple hud example",
     pluginMain = PluginExample
 ) {
     private val prefix by setting("Prefix", "Hello")

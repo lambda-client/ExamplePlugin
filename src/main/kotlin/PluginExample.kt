@@ -9,5 +9,7 @@ internal object PluginExample: Plugin() {
         hudElements.add(LabelHudExample)
     }
 
-    override fun onUnload() {}
+    override fun onUnload() {
+        // Here you can unregister threads etc...
+    }
 }

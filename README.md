@@ -28,12 +28,12 @@ In this guide we will use [IntelliJ IDEA](https://www.jetbrains.com/idea/) as ID
 
 Test if the environment is set up correctly by building the plugin jar using the Gradle tab on the left side of the IDE.
 1. Go to `PluginExample > Tasks > build > jar` in the Gradle tab and run the script
-2. IntelliJ will create a new directory called `build` the final built jar will be in `build/libs`
+2. IntelliJ will create a new directory called `build`. The final built jar will be in `build/libs`
 
 ### Config
 
-Configure the meta data of your plugin in `plugin_info.json` and `mcmod.info`
-The flag `main_class` must contain the target main class `Plugin` in this case it the `PluginExample.kt`
+Configure the metadata of your plugin in `plugin_info.json`.
+The flag `main_class` must contain the target main class `Plugin` in this case it is `PluginExample.kt`
 
 ### Plugin
 
@@ -48,14 +48,15 @@ Every service is required to be added to the main class in order to index the co
 
 A module represents a utility module inside the game.
 The `PluginModule` class acts as a wrapper for `Module` class. For many examples on how a module can work check out the [native modules](https://github.com/lambda-client/lambda/tree/master/src/main/kotlin/com/lambda/client/module/modules) of lambda, or the given example in this project.
-The difference to the native `Module` class is that a referral to the main plugin class is given in the object data.
+The difference from the native `Module` class is that each component of a plugin requires a reference to the main `Plugin` class.
 ```
 pluginMain = PluginExample
 ```
+Every PluginModule class will need to be registered to the main plugin class
 
 ### ClientCommand
 
-Plugins use the same class as the native client for registering commands. Feel free to check out the [commands of Lambda Client](https://github.com/lambda-client/lambda/tree/master/src/main/kotlin/com/lambda/client/command/commands) as reference. 
+Plugins use the same class as the native client for registering commands. Feel free to check out the [commands of Lambda Client](https://github.com/lambda-client/lambda/tree/master/src/main/kotlin/com/lambda/client/command/commands) as a reference. 
 
 ### PluginLabelHud
 
@@ -65,6 +66,7 @@ The difference to the native `LabelHud` class is that a referral to the main plu
 ```
 pluginMain = PluginExample
 ```
+Every `PluginLabelHud` class will need to be registered to the main `Plugin` class.
 
 ### Background Jobs
 
@@ -72,6 +74,9 @@ If coroutines are needed background jobs can be registered using
 ```
 bgJobs.add(BackgroundJob)
 ```
+
+### Mixin
+Example coming soon. Plugin won't be able to hot reload anymore because mixins need to be triggered on client start.
 
 ### Build
 
@@ -81,4 +86,6 @@ bgJobs.add(BackgroundJob)
 
 ### Publish (coming soon)
 
-Insert the link of your created fork into the plugin manager to load the plugin.
+Insert the link of your created fork into the plugin manager to load the plugin, or transfer your repository to official
+plugin [organization of Lambda](https://github.com/lambda-plugins/). After review, your plugin may get added to the native
+marketplace.
