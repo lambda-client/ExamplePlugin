@@ -25,6 +25,7 @@ In this guide we will use [IntelliJ IDEA](https://www.jetbrains.com/idea/) as ID
 2. Let the IDE collect dependencies and index the code.
 3. Goto `File > Project Structure... > SDKs` and make sure an SDK for Java 8 is installed and selected, if not download
    it [here](https://adoptopenjdk.net/index.html?variant=openjdk8&jvmVariant=hotspot)
+4. Run the `genIntellijRuns` Gradle task, or run `./gradlew genIntellijRuns`
 
 ### Configure Gradle
 
