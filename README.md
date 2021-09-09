@@ -36,7 +36,7 @@ Test if the environment is set up correctly by building the plugin jar using the
 ### Config
 
 Configure the metadata of your plugin in `plugin_info.json`.
-The flag `main_class` must contain the target main class `Plugin` in this case it is `PluginExample.kt`
+The flag `main_class` must contain the target main class `Plugin` in this case it is `ExamplePlugin.kt`
 
 ### Plugin
 

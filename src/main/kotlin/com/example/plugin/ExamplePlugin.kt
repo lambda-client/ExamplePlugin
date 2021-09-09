@@ -1,12 +1,14 @@
+package com.example.plugin
+
 import com.lambda.client.plugin.api.Plugin
 
-internal object PluginExample: Plugin() {
+internal object ExamplePlugin: Plugin() {
 
     override fun onLoad() {
         // Load any modules, commands, or HUD elements here
-        modules.add(ModuleExample)
-        commands.add(CommandExample)
-        hudElements.add(LabelHudExample)
+        modules.add(ExampleModule)
+        commands.add(ExampleCommand)
+        hudElements.add(ExampleLabelHud)
     }
 
     override fun onUnload() {

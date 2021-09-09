@@ -1,5 +1,5 @@
 {
-  "name": "PluginExample",
+  "name": "ExamplePlugin",
   "version": "1.0",
   "authors": [
     "me",
@@ -7,8 +7,8 @@
   ],
   "description": "does absolutely nothing",
   "url": "",
-  "min_api_version": "2.05.01",
+  "min_api_version": "2.09.01",
   "required_plugins": [],
-  "main_class": "PluginExample",
+  "main_class": "com.example.plugin.ExamplePlugin",
   "hot_reload": true
 }
