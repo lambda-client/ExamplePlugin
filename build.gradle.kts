@@ -147,7 +147,7 @@ tasks {
     }
 
     jar {
-                from(
+        from(
             library.map {
                 if (it.isDirectory) it else zipTree(it)
             }
