@@ -1,5 +1,4 @@
 import net.minecraftforge.gradle.userdev.UserDevExtension
-import net.minecraftforge.gradle.userdev.tasks.RenameJarInPlace
 import org.jetbrains.kotlin.konan.properties.loadProperties
 import org.spongepowered.asm.gradle.plugins.MixinExtension
 
@@ -143,6 +142,12 @@ tasks {
                 "-Xopt-in=kotlin.contracts.ExperimentalContracts",
                 "-Xlambdas=indy"
             )
+        }
+    }
+
+    processResources {
+        filesMatching("plugin_info.json") {
+            expand("version" to project.version)
         }
     }
 

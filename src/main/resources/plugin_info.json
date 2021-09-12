@@ -1,11 +1,11 @@
 {
   "name": "ExamplePlugin",
-  "version": "1.0",
+  "version": "${version}",
   "authors": [
     "me",
     "you"
   ],
-  "description": "does absolutely nothing",
+  "description": "Provides simple examples",
   "url": "",
   "min_api_version": "2.09.01",
   "required_plugins": [],
