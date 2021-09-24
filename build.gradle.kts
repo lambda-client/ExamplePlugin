@@ -38,16 +38,7 @@ repositories {
     maven("https://repo.spongepowered.org/repository/maven-public/")
     maven("https://jitpack.io")
     maven("https://impactdevelopment.github.io/maven/")
-    maven("https://maven.pkg.github.com/lambda-client/lambda-api") {
-        val githubProperty = runCatching {
-            loadProperties("${projectDir.absolutePath}/github.properties")
-        }.getOrNull()
-
-        credentials {
-            username = githubProperty?.getProperty("username") ?: System.getenv("GITHUB_ACTOR")
-            password = githubProperty?.getProperty("token") ?: System.getenv("GITHUB_ACTOR")
-        }
-    }
+    maven("https://maven.pkg.github.com/lambda-client/lambda")
 }
 
 val library: Configuration by configurations.creating
@@ -77,7 +68,7 @@ dependencies {
     "minecraft"("net.minecraftforge:forge:$minecraftVersion-$forgeVersion")
 
     // Dependencies
-    implementation("com.lambda:lambda-api:$apiVersion")
+    implementation("com.lambda:api:$apiVersion")
     implementation("org.jetbrains.kotlin:kotlin-stdlib")
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk7")
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
