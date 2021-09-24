@@ -15,5 +15,6 @@ internal object ExampleLabelHud: PluginLabelHud(
     override fun SafeClientEvent.updateText() {
         displayText.add(prefix, primaryColor)
         displayText.add(suffix, secondaryColor)
+        displayText.add(ExampleModule.getHudInfo(), primaryColor)
     }
 }

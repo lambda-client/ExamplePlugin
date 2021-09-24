@@ -6,7 +6,7 @@
     "you"
   ],
   "description": "Provides simple examples",
-  "url": "",
+  "url": "https://lambda-client.com/",
   "min_api_version": "2.09.01",
   "required_plugins": [],
   "main_class": "com.example.plugin.ExamplePlugin",
