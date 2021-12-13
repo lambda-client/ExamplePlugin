@@ -1,3 +1,5 @@
+package org.lambda
+
 import com.lambda.client.event.SafeClientEvent
 import com.lambda.client.module.Category
 import com.lambda.client.plugin.api.PluginModule
@@ -8,11 +10,11 @@ import net.minecraft.entity.Entity
 import net.minecraft.network.play.client.CPacketUseEntity
 import net.minecraft.util.EnumHand
 
-internal object ModuleExample: PluginModule(
-    name = "ModuleExample",
+internal object ExampleModule: PluginModule(
+    name = "ExampleModule",
     category = Category.MISC,
     description = "Example module which mounts entities using packets",
-    pluginMain = PluginExample
+    pluginMain = ExamplePlugin
 ) {
     private val maxReach by setting("Max Reach", 4.9f, 0.0f..8.0f, 0.1f, description = "Player's Max Reach")
     private val mountEntity = setting("Mount Entity", false, description = "Mounts the saved entity or falls back to the closest one")
@@ -21,7 +23,7 @@ internal object ModuleExample: PluginModule(
     private var entityToMount: Entity? = null
 
     init {
-        saveEntity.consumers.add {_, it ->
+        saveEntity.consumers.add { _, it ->
             if (it) {
                 mc.objectMouseOver?.entityHit?.let {
                     entityToMount = it

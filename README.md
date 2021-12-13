@@ -43,7 +43,7 @@ The flag `main_class` must contain the target main class `Plugin` in this case i
 The plugin main class will act as a register for the functions a plugin can provide.
 For example when a new module class is created you have to add this to the `onLoad()` function of the plugin class.
 ```
-modules.add(ModuleExample)
+modules.add(ExampleModule)
 ```
 Every service is required to be added to the main class in order to index the contents.
 
