@@ -72,7 +72,7 @@ configurations {
 }
 
 dependencies {
-    minecraft 'net.minecraftforge:forge:1.12.2-14.23.5.2855'
+    minecraft 'net.minecraftforge:forge:1.12.2-14.23.5.2860'
 
     // API coming soon
 //    implementation 'com.github.lambda-client:lambda:2.06'
