@@ -1,8 +1,10 @@
+package org.lambda
+
 import com.lambda.client.command.ClientCommand
 import com.lambda.client.manager.managers.FriendManager
 import com.lambda.client.util.text.MessageSendHelper
 
-object CommandExample: ClientCommand(
+object ExampleCommand: ClientCommand(
     name = "example",
     description = "Example friend command"
 ) {
