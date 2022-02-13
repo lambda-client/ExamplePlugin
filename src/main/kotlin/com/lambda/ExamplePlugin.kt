@@ -1,6 +1,9 @@
-package org.lambda
+package com.lambda
 
 import com.lambda.client.plugin.api.Plugin
+import com.lambda.commands.ExampleCommand
+import com.lambda.huds.ExampleLabelHud
+import com.lambda.modules.ExampleModule
 
 internal object ExamplePlugin: Plugin() {
 

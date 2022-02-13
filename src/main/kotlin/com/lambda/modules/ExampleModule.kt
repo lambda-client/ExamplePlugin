@@ -1,5 +1,6 @@
-package org.lambda
+package com.lambda.modules
 
+import com.lambda.ExamplePlugin
 import com.lambda.client.event.SafeClientEvent
 import com.lambda.client.module.Category
 import com.lambda.client.plugin.api.PluginModule
@@ -10,6 +11,9 @@ import net.minecraft.entity.Entity
 import net.minecraft.network.play.client.CPacketUseEntity
 import net.minecraft.util.EnumHand
 
+/**
+ * This is a module. First set properties then settings then add listener.
+ * **/
 internal object ExampleModule: PluginModule(
     name = "ExampleModule",
     category = Category.MISC,

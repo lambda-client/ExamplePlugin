@@ -1,5 +1,6 @@
-package org.lambda
+package com.lambda.huds
 
+import com.lambda.ExamplePlugin
 import com.lambda.client.event.SafeClientEvent
 import com.lambda.client.plugin.api.PluginLabelHud
 

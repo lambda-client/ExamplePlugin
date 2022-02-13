@@ -1,4 +1,4 @@
-package org.lambda
+package com.lambda.commands
 
 import com.lambda.client.command.ClientCommand
 import com.lambda.client.manager.managers.FriendManager
