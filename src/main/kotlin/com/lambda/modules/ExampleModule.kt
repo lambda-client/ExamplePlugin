@@ -2,27 +2,19 @@ package com.lambda.modules
 
 import com.lambda.ExamplePlugin
 import com.lambda.client.event.SafeClientEvent
-import com.lambda.client.event.events.PacketEvent
 import com.lambda.client.event.events.PlayerAttackEvent
 import com.lambda.client.mixin.extension.syncCurrentPlayItem
 import com.lambda.client.module.Category
-import com.lambda.client.module.modules.misc.AutoTool.setting
 import com.lambda.client.plugin.api.PluginModule
 import com.lambda.client.util.combat.CombatUtils
 import com.lambda.client.util.combat.CombatUtils.equipBestWeapon
 import com.lambda.client.util.items.hotbarSlots
 import com.lambda.client.util.items.swapToSlot
-import com.lambda.client.util.text.MessageSendHelper.sendChatMessage
-import com.lambda.client.util.threads.onMainThreadSafe
 import com.lambda.client.util.threads.safeListener
-import kotlinx.coroutines.runBlocking
 import net.minecraft.block.state.IBlockState
 import net.minecraft.enchantment.EnchantmentHelper
-import net.minecraft.entity.Entity
 import net.minecraft.entity.EntityLivingBase
 import net.minecraft.init.Enchantments
-import net.minecraft.network.play.client.CPacketUseEntity
-import net.minecraft.util.EnumHand
 import net.minecraftforge.event.entity.player.PlayerInteractEvent
 import net.minecraftforge.fml.common.gameevent.TickEvent
 import org.lwjgl.input.Mouse
@@ -30,7 +22,7 @@ import org.lwjgl.input.Mouse
 /**
  * This is a module. First set properties then settings then add listener.
  * **/
-internal object ExampleModule: PluginModule(
+internal object ExampleModule : PluginModule(
     name = "ExampleModule",
     category = Category.MISC,
     description = "Example module which automatically switchs to the best tools when mining or attacking",

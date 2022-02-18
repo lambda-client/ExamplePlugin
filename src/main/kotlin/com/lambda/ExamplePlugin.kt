@@ -8,7 +8,7 @@ import com.lambda.huds.ExampleLabelHud
 import com.lambda.managers.ExampleManager
 import com.lambda.modules.ExampleModule
 
-internal object ExamplePlugin: Plugin() {
+internal object ExamplePlugin : Plugin() {
 
     override fun onLoad() {
         // Load any modules, commands, or HUD elements here
