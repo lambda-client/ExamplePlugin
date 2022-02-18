@@ -8,7 +8,7 @@ buildscript {
     }
 
     dependencies {
-        classpath 'net.minecraftforge.gradle:ForgeGradle:4.+'
+        classpath 'net.minecraftforge.gradle:ForgeGradle:5.+'
         classpath 'org.spongepowered:mixingradle:0.7-SNAPSHOT'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion"
     }
@@ -123,15 +123,14 @@ dependencies {
 
 mixin {
     defaultObfuscationEnv 'searge'
-    add sourceSets.main, 'mixins.exampleplugin.refmap.json'
+    add sourceSets.main, 'mixins.ExamplePlugin.refmap.json'
 }
 
 processResources {
-    inputs.property 'version', project.version
-
     exclude '**/rawimagefiles'
 
     from(sourceSets.main.resources.srcDirs) {
+        duplicatesStrategy = DuplicatesStrategy.INCLUDE
         include 'plugin_info.json'
         expand 'version': project.version
     }

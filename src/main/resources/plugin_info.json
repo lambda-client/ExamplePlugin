@@ -1,14 +1,11 @@
 {
   "name": "ExamplePlugin",
   "version": "1.0",
-  "authors": [
-    "me",
-    "you"
-  ],
   "description": "Example implementation of a plugin for Lambda.",
-  "url": "",
-  "min_api_version": "3.0",
-  "required_plugins": [],
+  "url": "https://github.com/lambda-client/ExamplePlugin",
+  "authors": [ "me", "you" ],
   "main_class": "com.lambda.ExamplePlugin",
-  "hot_reload": false
+  "min_api_version": "3.0",
+  "mixins": [ "mixins.ExamplePlugin.json" ],
+  "required_plugins": []
 }
