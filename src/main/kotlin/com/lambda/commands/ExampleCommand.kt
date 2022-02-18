@@ -3,6 +3,7 @@ package com.lambda.commands
 import com.lambda.client.command.ClientCommand
 import com.lambda.client.manager.managers.FriendManager
 import com.lambda.client.util.text.MessageSendHelper
+import com.lambda.managers.ExampleManager
 
 object ExampleCommand: ClientCommand(
     name = "example",
@@ -23,6 +24,12 @@ object ExampleCommand: ClientCommand(
                         }
                     }
                 }
+            }
+        }
+
+        literal("gameloop", "?") {
+            execute("Shows game loop start time") {
+                MessageSendHelper.sendChatMessage("The game loop started exactly at ${ExampleManager.gameLoopStartTime}.")
             }
         }
     }
