@@ -9,6 +9,6 @@
   "url": "",
   "min_api_version": "3.0",
   "required_plugins": [],
-  "main_class": "ExamplePlugin",
+  "main_class": "org.lambda.ExamplePlugin",
   "hot_reload": true
 }
