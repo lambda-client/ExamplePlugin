@@ -117,6 +117,10 @@ dependencies {
     // This Baritone will NOT be included in the jar
     implementation 'com.github.cabaletta:baritone:1.2.14'
 
+    // Unit Testing frameworks
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.2'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.2'
+
     // Add your dependencies below
     // jarLibs 'com.lambda:example:1.0.0'
 }
@@ -134,6 +138,10 @@ processResources {
         include 'plugin_info.json'
         expand 'version': project.version
     }
+}
+
+test {
+    useJUnitPlatform()
 }
 
 jar.finalizedBy('reobfJar')
