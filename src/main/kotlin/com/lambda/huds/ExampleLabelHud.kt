@@ -1,9 +1,10 @@
-package org.lambda
+package com.lambda.huds
 
+import com.lambda.ExamplePlugin
 import com.lambda.client.event.SafeClientEvent
 import com.lambda.client.plugin.api.PluginLabelHud
 
-internal object ExampleLabelHud: PluginLabelHud(
+internal object ExampleLabelHud : PluginLabelHud(
     name = "ExampleLabelHud",
     category = Category.MISC,
     description = "Simple hud example",

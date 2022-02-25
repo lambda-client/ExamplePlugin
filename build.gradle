@@ -8,7 +8,7 @@ buildscript {
     }
 
     dependencies {
-        classpath 'net.minecraftforge.gradle:ForgeGradle:4.+'
+        classpath 'net.minecraftforge.gradle:ForgeGradle:5.+'
         classpath 'org.spongepowered:mixingradle:0.7-SNAPSHOT'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion"
     }
@@ -68,9 +68,9 @@ dependencies {
     minecraft "net.minecraftforge:forge:$minecraftVersion-$forgeVersion"
 
     // Online maven dependency coming soon
-    implementation(files("lib/lambda-3.0.1-api.jar"))
+    implementation files("lib/lambda-3.1-api.jar")
 
-    implementation('org.spongepowered:mixin:0.7.11-SNAPSHOT') {
+    implementation('org.spongepowered:mixin:0.8.3') {
         exclude module: 'commons-io'
         exclude module: 'gson'
         exclude module: 'guava'
@@ -79,7 +79,7 @@ dependencies {
     }
 
     // Hacky way to get mixin work
-    annotationProcessor('org.spongepowered:mixin:0.8.2:processor') {
+    annotationProcessor('org.spongepowered:mixin:0.8.3:processor') {
         exclude module: 'gson'
     }
 
@@ -112,7 +112,7 @@ dependencies {
 
     // Add them back to compileOnly (provided)
     compileOnly "org.jetbrains.kotlin:kotlin-stdlib-common:$kotlinVersion"
-    compileOnly 'org.jetbrains:annotations:22.0.0'
+    compileOnly 'org.jetbrains:annotations:23.0.0'
 
     // This Baritone will NOT be included in the jar
     implementation 'com.github.cabaletta:baritone:1.2.14'
@@ -127,15 +127,14 @@ dependencies {
 
 mixin {
     defaultObfuscationEnv 'searge'
-    add sourceSets.main, 'mixins.lambda.refmap.json'
+    add sourceSets.main, 'mixins.ExamplePlugin.refmap.json'
 }
 
 processResources {
-    inputs.property 'version', project.version
-
     exclude '**/rawimagefiles'
 
     from(sourceSets.main.resources.srcDirs) {
+        duplicatesStrategy = DuplicatesStrategy.INCLUDE
         include 'plugin_info.json'
         expand 'version': project.version
     }

@@ -1,8 +1,8 @@
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.fail
 import com.google.gson.JsonParser
+import com.lambda.client.commons.utils.ClassUtils.instance
 import com.lambda.client.plugin.api.Plugin
-import com.lambda.commons.utils.ClassUtils.instance
 
 class ClassTest {
 

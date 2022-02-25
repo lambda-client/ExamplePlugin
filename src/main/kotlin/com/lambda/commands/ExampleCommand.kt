@@ -1,12 +1,13 @@
-package org.lambda
+package com.lambda.commands
 
 import com.lambda.client.command.ClientCommand
 import com.lambda.client.manager.managers.FriendManager
 import com.lambda.client.util.text.MessageSendHelper
+import com.lambda.managers.ExampleManager
 
-object ExampleCommand: ClientCommand(
+object ExampleCommand : ClientCommand(
     name = "example",
-    description = "Example friend command"
+    description = "Example command"
 ) {
     init {
         literal("add", "new", "+") {
@@ -24,6 +25,10 @@ object ExampleCommand: ClientCommand(
                     }
                 }
             }
+        }
+
+        execute("Shows game loop start time") {
+            MessageSendHelper.sendChatMessage("The game loop started exactly at ${ExampleManager.gameLoopStartTime}.")
         }
     }
 }

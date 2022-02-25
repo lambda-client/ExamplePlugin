@@ -79,8 +79,11 @@ If coroutines are needed background jobs can be registered using
 bgJobs.add(BackgroundJob)
 ```
 
-### Mixin
-Example coming soon. Plugin won't be able to hot reload anymore because mixins need to be triggered on client start.
+### Mixins
+
+To use mixins, you have to:
+1. Register the files in the `plugin_info.json` in the `mixins` list.
+2. Add the `refmap` path from `mixins.ExamplePlugin.json` to the `build.gradle` source sets.
 
 ### Build
 
