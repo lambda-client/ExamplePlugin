@@ -11,6 +11,7 @@ buildscript {
         classpath 'net.minecraftforge.gradle:ForgeGradle:5.+'
         classpath 'org.spongepowered:mixingradle:0.7-SNAPSHOT'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion"
+        classpath 'gradle.plugin.com.github.johnrengelman:shadow:7.1.2'
     }
 }
 
@@ -18,6 +19,7 @@ apply plugin: 'idea'
 apply plugin: 'kotlin'
 apply plugin: 'net.minecraftforge.gradle'
 apply plugin: 'org.spongepowered.mixin'
+apply plugin: 'com.github.johnrengelman.shadow'
 
 compileJava {
     sourceCompatibility = targetCompatibility = '1.8'
@@ -145,3 +147,15 @@ test {
 }
 
 jar.finalizedBy('reobfJar')
+
+shadowJar {
+    archiveClassifier.set('relocated')
+    configurations = []
+    relocate 'kotlin', 'com.lambda.shadow.kotlin'
+    relocate 'kotlinx', 'com.lambda.shadow.kotlinx'
+    finalizedBy 'reobfShadowJar'
+}
+
+reobf {
+    shadowJar {}
+}
