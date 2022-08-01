@@ -3,15 +3,15 @@ group project.modGroup
 
 buildscript {
     repositories {
-        maven { url = 'https://files.minecraftforge.net/maven' }
-        maven { url = 'https://repo.spongepowered.org/repository/maven-public/' }
+        maven { url = 'https://maven.minecraftforge.net/' }
+        maven { url = 'https://repo.spongepowered.org/maven/' }
     }
 
     dependencies {
-        classpath 'net.minecraftforge.gradle:ForgeGradle:5.+'
+        classpath 'net.minecraftforge.gradle:ForgeGradle:4.+'
         classpath 'org.spongepowered:mixingradle:0.7-SNAPSHOT'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion"
-        classpath 'gradle.plugin.com.github.johnrengelman:shadow:7.1.2'
+        classpath 'com.github.jengelman.gradle.plugins:shadow:6.1.0'
     }
 }
 
@@ -72,7 +72,7 @@ dependencies {
     // Online maven dependency coming soon
     implementation files("lib/lambda-3.2-api.jar")
 
-    implementation('org.spongepowered:mixin:0.8.3') {
+    implementation('org.spongepowered:mixin:0.8.5') {
         exclude module: 'commons-io'
         exclude module: 'gson'
         exclude module: 'guava'
@@ -81,7 +81,7 @@ dependencies {
     }
 
     // Hacky way to get mixin work
-    annotationProcessor('org.spongepowered:mixin:0.8.3:processor') {
+    annotationProcessor('org.spongepowered:mixin:0.8.5:processor') {
         exclude module: 'gson'
     }
 
@@ -149,7 +149,7 @@ test {
 jar.finalizedBy('reobfJar')
 
 shadowJar {
-    archiveClassifier.set('relocated')
+    archiveClassifier.set('')
     configurations = []
     relocate 'kotlin', 'com.lambda.shadow.kotlin'
     relocate 'kotlinx', 'com.lambda.shadow.kotlinx'
@@ -158,4 +158,11 @@ shadowJar {
 
 reobf {
     shadowJar {}
+    jar {
+        enabled = false
+    }
+}
+
+artifacts {
+    shadowJar
 }

@@ -31,7 +31,7 @@ In this guide we will use [IntelliJ IDEA](https://www.jetbrains.com/idea/) as ID
 ### Configure Gradle
 
 Test if the environment is set up correctly by building the plugin jar using the Gradle tab on the right side of the IDE.
-1. Go to `ExamplePlugin > Tasks > shadow > shadowJar` in the Gradle tab and run the script
+1. Go to `ExamplePlugin > Tasks > build > build` in the Gradle tab and run the script
 2. IntelliJ will create a new directory called `build`. The final built jar will be in `build/libs`
 
 ### Config
