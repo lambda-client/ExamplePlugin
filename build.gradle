@@ -47,7 +47,7 @@ minecraft {
         client {
             workingDirectory project.file('run')
 
-            property 'fml.coreMods.load', 'com.lambda.client.mixin.MixinLoaderForge'
+            property 'fml.coreMods.load', 'com.lambda.client.LambdaCoreMod'
             property 'mixin.env.disableRefMap', 'true' // Disable refmap so we don't get trolled by Baritone
 
             property 'forge.logging.markers', 'SCAN,REGISTRIES,REGISTRYDUMP'
@@ -84,6 +84,10 @@ dependencies {
     annotationProcessor('org.spongepowered:mixin:0.8.5:processor') {
         exclude module: 'gson'
     }
+    
+    implementation 'org.reflections:reflections:0.9.12'
+    
+    implementation 'com.github.cbyrneee:DiscordIPC:e18542f600'
 
     // Kotlin libs
     // kotlin-stdlib-common and annotations aren't required at runtime
