@@ -8,7 +8,7 @@ buildscript {
     }
 
     dependencies {
-        classpath 'net.minecraftforge.gradle:ForgeGradle:4.+'
+        classpath 'net.minecraftforge.gradle:ForgeGradle:5.+'
         classpath 'org.spongepowered:mixingradle:0.7-SNAPSHOT'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion"
         classpath 'com.github.jengelman.gradle.plugins:shadow:6.1.0'
@@ -59,7 +59,7 @@ minecraft {
 configurations {
     jarLibs
     // Force choosing the correct nightly build because Mac OS chooses an invalid one
-    all {
+    configureEach {
         resolutionStrategy {
             force 'org.lwjgl.lwjgl:lwjgl-platform:2.9.4-nightly-20150209'
         }
@@ -70,7 +70,7 @@ dependencies {
     minecraft "net.minecraftforge:forge:$minecraftVersion-$forgeVersion"
 
     // Online maven dependency coming soon
-    implementation files("lib/lambda-3.2-api.jar")
+    implementation 'com.github.lambda-client:lambda:-SNAPSHOT'
 
     implementation('org.spongepowered:mixin:0.8.5') {
         exclude module: 'commons-io'
