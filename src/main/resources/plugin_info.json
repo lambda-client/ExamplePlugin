@@ -5,7 +5,7 @@
   "url": "https://github.com/lambda-client/ExamplePlugin",
   "authors": [ "me", "you" ],
   "main_class": "com.lambda.ExamplePlugin",
-  "min_api_version": "3.2",
+  "min_api_version": "3.3",
   "mixins": [ "mixins.ExamplePlugin.json" ],
   "required_plugins": []
 }
