@@ -24,6 +24,9 @@ apply plugin: 'com.github.johnrengelman.shadow'
 compileJava {
     sourceCompatibility = targetCompatibility = '1.8'
     options.encoding = 'UTF-8'
+    // Disables Gradle build caching for this task
+    // If build caching is enabled this can cause the refmap to not be built and included
+    outputs.upToDateWhen { false }
 }
 
 compileKotlin.kotlinOptions {
@@ -83,9 +86,9 @@ dependencies {
     annotationProcessor('org.spongepowered:mixin:0.8.5:processor') {
         exclude module: 'gson'
     }
-    
+
     implementation 'org.reflections:reflections:0.9.12'
-    
+
     implementation 'com.github.cbyrneee:DiscordIPC:e18542f600'
 
     // Kotlin libs
@@ -156,7 +159,8 @@ shadowJar {
     configurations = []
     relocate 'kotlin', 'com.lambda.shadow.kotlin'
     relocate 'kotlinx', 'com.lambda.shadow.kotlinx'
-    finalizedBy 'reobfShadowJar'
+    finalizedBy 'configureReobfTaskForReobfShadowJar', 'reobfShadowJar'
+    mustRunAfter 'jar'
 }
 
 reobf {
